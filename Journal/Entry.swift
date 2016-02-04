@@ -13,6 +13,8 @@ class Entry: Equatable {
     let title: String
     let bodyText: String
     
+    var entry: Entry?
+    
     init(title: String, bodyText: String) {
         self.title = title
         self.bodyText = bodyText
