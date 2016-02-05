@@ -19,6 +19,11 @@ class EntryListTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        tableView.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -27,14 +32,9 @@ class EntryListTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return EntryController.sharedInstance.entriesArray.count
-    }
-
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return EntryController.sharedInstance.entriesArray.count
     }
 
     
@@ -85,14 +85,20 @@ class EntryListTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "toDetailView" {
+            if let entryDetailViewController = segue.destinationViewController as? EntryDetailViewController {
+                if let cell = sender as? UITableViewCell, indexPath = tableView.indexPathForCell(cell) {
+                    let entry = EntryController.sharedInstance.entriesArray[indexPath.row]
+                    entryDetailViewController.entry = entry
+                }
+            }
+        }
     }
-    */
-
+    
+    
+    
 }

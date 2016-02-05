@@ -13,10 +13,15 @@ class EntryDetailViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var bodyTextView: UITextView!
     
+    var entry: Entry?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if let entry = entry {
+            updateWithEntry(entry)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,7 +29,17 @@ class EntryDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func updateWithEntry(entry: Entry) {
+        self.titleTextField.text = entry.title
+        self.bodyTextView.text = entry.bodyText
+    }
+    
     @IBAction func saveButtonTapped(sender: AnyObject) {
+        
+        if let entryTitle = titleTextField.text, entryBodyText = bodyTextView.text {
+            
+            EntryController.sharedInstance.addEntry(Entry(title: entryTitle, bodyText: entryBodyText))
+        }
         
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
