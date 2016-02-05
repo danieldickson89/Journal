@@ -25,6 +25,7 @@ class EntryController {
         let entryDictionariesFromDefaults = NSUserDefaults.standardUserDefaults().objectForKey(entryKey) as? [[String: AnyObject]]
         
         if let entryDictionary = entryDictionariesFromDefaults {
+            
             self.entriesArray = entryDictionary.map({Entry(dictionary: $0)!})
         }
     }

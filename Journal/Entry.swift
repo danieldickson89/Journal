@@ -14,22 +14,23 @@ class Entry: Equatable {
     private let titleKey = "title"
     private let bodyTextKey = "bodyText"
     
-    var timeStamp: String
+    var timeStamp: NSDate
     let title: String
     let bodyText: String
     
-    init(timeStamp: String, title: String, bodyText: String) {
+    init(timeStamp: NSDate = NSDate(), title: String, bodyText: String) {
         self.timeStamp = timeStamp
         self.title = title
         self.bodyText = bodyText
     }
     
     init?(dictionary: [String: AnyObject]) {
-        guard let timeStamp = dictionary[timestampKey] as? String,
+        guard let stringTimeStamp = dictionary[timestampKey] as? String,
+              let timeStamp = Entry.dateFromString(stringTimeStamp),
               let title = dictionary[titleKey] as? String,
               let bodyText = dictionary[bodyTextKey] as? String else {
                 
-                self.timeStamp = ""
+                self.timeStamp = NSDate()
                 self.title = ""
                 self.bodyText = ""
                 
@@ -42,12 +43,25 @@ class Entry: Equatable {
     
     func journalDictionary() -> [String: AnyObject] {
         let dictionary: [String: AnyObject] = [
-            timestampKey: self.timeStamp,
+            timestampKey: Entry.stringFromDate(self.timeStamp),
             titleKey: self.title,
             bodyTextKey: self.bodyTextKey
         ]
+
         
         return dictionary
+    }
+    
+    private static func stringFromDate(date: NSDate) -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = .MediumStyle
+        return dateFormatter.stringFromDate(date)
+    }
+    
+    private static func dateFromString(date: String) -> NSDate? {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = .MediumStyle
+        return dateFormatter.dateFromString(date)
     }
     
 }

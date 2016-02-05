@@ -48,7 +48,7 @@ class EntryDetailViewController: UIViewController {
         
         if let entryTitle = titleTextField.text, entryBodyText = bodyTextView.text {
             
-            EntryController.sharedInstance.addEntry(Entry(timeStamp: String(NSDate()), title: entryTitle, bodyText: entryBodyText))
+            EntryController.sharedInstance.addEntry(Entry(title: entryTitle, bodyText: entryBodyText))
         }
         
         self.navigationController?.popToRootViewControllerAnimated(true)
