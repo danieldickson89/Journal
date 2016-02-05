@@ -9,6 +9,8 @@
 import UIKit
 
 class EntryDetailViewController: UIViewController {
+    
+    // MARK: - Properties
 
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var bodyTextView: UITextView!
@@ -34,6 +36,13 @@ class EntryDetailViewController: UIViewController {
         self.bodyTextView.text = entry.bodyText
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        titleTextField.resignFirstResponder()
+        return true
+    }
+    
+    // MARK: - Actions
+    
     @IBAction func saveButtonTapped(sender: AnyObject) {
         
         if let entryTitle = titleTextField.text, entryBodyText = bodyTextView.text {
@@ -51,18 +60,5 @@ class EntryDetailViewController: UIViewController {
         bodyTextView.text = ""
         
     }
-    
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

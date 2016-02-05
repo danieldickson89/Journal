@@ -9,7 +9,7 @@
 import Foundation
 
 class Entry: Equatable {
-    let timestamp: String = "At one point in time..."
+    let timestamp = NSDate()
     let title: String
     let bodyText: String
     
@@ -22,5 +22,5 @@ class Entry: Equatable {
 }
 
 func ==(lhs: Entry, rhs: Entry) -> Bool {
-    return (lhs.timestamp == rhs.timestamp) && (lhs.title == rhs.title) && (lhs.bodyText == rhs.bodyText)
+    return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
 }
