@@ -37,7 +37,7 @@ class EntryListTableViewController: UITableViewController {
         let entry = EntryController.sharedInstance.entriesArray[indexPath.row]
         
         cell.textLabel?.text = entry.title
-        cell.detailTextLabel?.text = "\(entry.timestamp)"
+        cell.detailTextLabel?.text = "\(NSDate())"
 
         return cell
     }
