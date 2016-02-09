@@ -26,11 +26,6 @@ class EntryDetailViewController: UIViewController {
             updateWithEntry(entry)
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func updateWithEntry(entry: Entry) {
         self.titleTextField.text = entry.title
@@ -56,10 +51,7 @@ class EntryDetailViewController: UIViewController {
 
    
     @IBAction func clearButtonTapped(sender: AnyObject) {
-        
         titleTextField.text = ""
         bodyTextView.text = ""
-        
     }
-
 }

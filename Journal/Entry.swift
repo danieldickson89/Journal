@@ -47,7 +47,7 @@ class Entry: Equatable {
             titleKey: self.title,
             bodyTextKey: self.bodyTextKey
         ]
-
+        
         
         return dictionary
     }

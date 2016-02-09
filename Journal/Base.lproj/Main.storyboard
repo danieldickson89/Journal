@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NCw-On-tVL">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Entry List Table View Controller-->
@@ -71,28 +72,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nop-hB-0fp">
-                                <rect key="frame" x="126" y="102" width="348" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="348" id="WGV-Rr-6vx"/>
-                                </constraints>
+                                <rect key="frame" x="40" y="102" width="520" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HCV-8O-xw8">
-                                <rect key="frame" x="126" y="152" width="348" height="293"/>
+                                <rect key="frame" x="40" y="152" width="520" height="378"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="348" id="rNh-di-cGG"/>
-                                </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8va-oV-olQ">
-                                <rect key="frame" x="277" y="468" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="lYg-1h-NwJ"/>
-                                </constraints>
+                                <rect key="frame" x="282" y="550" width="36" height="30"/>
                                 <state key="normal" title="Clear"/>
                                 <connections>
                                     <action selector="clearButtonTapped:" destination="RvO-Je-W7K" eventType="touchUpInside" id="rmX-z3-y77"/>
@@ -101,13 +93,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="8va-oV-olQ" firstAttribute="top" secondItem="HCV-8O-xw8" secondAttribute="bottom" constant="23" id="3T2-ug-RJh"/>
-                            <constraint firstItem="Fcn-IB-YVc" firstAttribute="top" secondItem="8va-oV-olQ" secondAttribute="bottom" constant="102" id="3pi-XY-tOl"/>
-                            <constraint firstItem="8va-oV-olQ" firstAttribute="centerX" secondItem="YwP-RU-9ZR" secondAttribute="centerX" id="52m-6P-zWc"/>
-                            <constraint firstItem="HCV-8O-xw8" firstAttribute="centerX" secondItem="nop-hB-0fp" secondAttribute="centerX" id="RHT-BQ-JWS"/>
-                            <constraint firstItem="HCV-8O-xw8" firstAttribute="top" secondItem="nop-hB-0fp" secondAttribute="bottom" constant="20" id="Zb3-Mk-pkz"/>
-                            <constraint firstItem="nop-hB-0fp" firstAttribute="top" secondItem="wJY-zN-blF" secondAttribute="bottom" constant="38" id="q8l-8W-R8I"/>
-                            <constraint firstItem="HCV-8O-xw8" firstAttribute="centerX" secondItem="8va-oV-olQ" secondAttribute="centerX" id="zIJ-tU-fbP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nop-hB-0fp" secondAttribute="trailing" constant="20" id="0Yn-WZ-cmM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HCV-8O-xw8" secondAttribute="trailing" constant="20" id="HIV-WO-6MT"/>
+                            <constraint firstItem="Fcn-IB-YVc" firstAttribute="top" secondItem="8va-oV-olQ" secondAttribute="bottom" constant="20" id="Iv0-0D-yUr"/>
+                            <constraint firstItem="8va-oV-olQ" firstAttribute="top" secondItem="HCV-8O-xw8" secondAttribute="bottom" constant="20" id="Kz1-91-N7a"/>
+                            <constraint firstItem="8va-oV-olQ" firstAttribute="centerX" secondItem="YwP-RU-9ZR" secondAttribute="centerX" id="d6D-Bj-lhP"/>
+                            <constraint firstItem="nop-hB-0fp" firstAttribute="top" secondItem="wJY-zN-blF" secondAttribute="bottom" constant="38" id="hvb-8S-8lx"/>
+                            <constraint firstItem="nop-hB-0fp" firstAttribute="leading" secondItem="YwP-RU-9ZR" secondAttribute="leadingMargin" constant="20" id="k9X-ot-TAg"/>
+                            <constraint firstItem="HCV-8O-xw8" firstAttribute="leading" secondItem="YwP-RU-9ZR" secondAttribute="leadingMargin" constant="20" id="lyG-j5-IwQ"/>
+                            <constraint firstItem="HCV-8O-xw8" firstAttribute="top" secondItem="nop-hB-0fp" secondAttribute="bottom" constant="20" id="ocm-aW-M6P"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Psh-ie-pnE">
