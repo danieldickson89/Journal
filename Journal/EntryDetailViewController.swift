@@ -20,6 +20,8 @@ class EntryDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .myGreenColor()
 
         // Do any additional setup after loading the view.
         if let entry = entry {
@@ -29,7 +31,7 @@ class EntryDetailViewController: UIViewController {
     
     func updateWithEntry(entry: Entry) {
         self.titleTextField.text = entry.title
-        self.bodyTextView.text = entry.bodyText
+        self.bodyTextView.text = entry.text
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -43,7 +45,7 @@ class EntryDetailViewController: UIViewController {
         
         if let entryTitle = titleTextField.text, entryBodyText = bodyTextView.text {
             
-            EntryController.sharedInstance.addEntry(Entry(title: entryTitle, bodyText: entryBodyText))
+            EntryController.sharedInstance.addEntry(Entry(title: entryTitle, text: entryBodyText))
         }
         
         self.navigationController?.popToRootViewControllerAnimated(true)

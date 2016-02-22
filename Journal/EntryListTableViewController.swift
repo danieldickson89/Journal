@@ -16,6 +16,7 @@ class EntryListTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        view.backgroundColor = .myGreenColor()
         tableView.reloadData()
     }
 
@@ -40,8 +41,10 @@ class EntryListTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
+            
+            let entry = EntryController.sharedInstance.entriesArray[indexPath.row]
             // Delete the row from the data source
-            EntryController.sharedInstance.entriesArray.removeAtIndex(indexPath.row)
+            EntryController.sharedInstance.removeEntry(entry)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
     }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 class EntryController {
     
@@ -14,34 +15,35 @@ class EntryController {
     
     static let sharedInstance = EntryController()
     
-    var entriesArray: [Entry]
-    
-    init() {
-        entriesArray = []
-        self.loadFromPersistentStorage()
-    }
-    
-    func loadFromPersistentStorage() {
-        let entryDictionariesFromDefaults = NSUserDefaults.standardUserDefaults().objectForKey(entryKey) as? [[String: AnyObject]]
+    var entriesArray: [Entry] {
+        let request = NSFetchRequest(entityName: "Entry")
         
-        if let entryDictionary = entryDictionariesFromDefaults {
-            
-            self.entriesArray = entryDictionary.map({Entry(dictionary: $0)!})
+        let moc = Stack.sharedStack.managedObjectContext
+        
+        do {
+            return try moc.executeFetchRequest(request) as! [Entry]
+        } catch {
+            return []
         }
     }
     
     func saveToPersistentStorage() {
-        let entryDictionaries = self.entriesArray.map({ $0.journalDictionary()})
-        NSUserDefaults.standardUserDefaults().setObject(entryDictionaries, forKey: entryKey)
+        let moc = Stack.sharedStack.managedObjectContext
+        do {
+            try moc.save()
+        } catch {
+            print("Error saving Managed Object Context. Items not saved.")
+        }
     }
     
     
     func addEntry(entry: Entry) {
-        entriesArray.append(entry)
         self.saveToPersistentStorage()
     }
     
-    func removeEntry(indexPath: NSIndexPath) {
-        entriesArray.removeAtIndex(indexPath.row)
+    func removeEntry(entry: Entry) {
+        
+        entry.managedObjectContext?.deleteObject(entry)
+        saveToPersistentStorage()
     }
 }
