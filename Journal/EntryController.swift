@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 class EntryController {
-    
+
     private let entryKey = "entryKey"
     
     static let sharedInstance = EntryController()
@@ -21,7 +21,10 @@ class EntryController {
         let moc = Stack.sharedStack.managedObjectContext
         
         do {
-            return try moc.executeFetchRequest(request) as! [Entry]
+            return (try moc.executeFetchRequest(request) as! [Entry]).sort({$0.title < $1.title
+                //(entry1, entry2) -> Bool in
+                //return entry1.timestamp.compare(entry2.timestamp) == NSComparisonResult.OrderedDescending
+            })
         } catch {
             return []
         }

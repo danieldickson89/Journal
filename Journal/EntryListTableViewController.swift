@@ -8,25 +8,55 @@
 
 import UIKit
 
-class EntryListTableViewController: UITableViewController {
-
+class EntryListTableViewController: UITableViewController, UISearchResultsUpdating {
+    
+    var searchController: UISearchController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpSearchController()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        view.backgroundColor = .myGreenColor()
+        //view.backgroundColor = .myGreenColor()
         tableView.reloadData()
     }
-
+    
+    // MARK: - Search Controller
+    
+    func setUpSearchController() {
+        let resultsViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("resultsVC")
+        
+        searchController = UISearchController(searchResultsController: resultsViewController)
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.sizeToFit()
+        searchController.hidesNavigationBarDuringPresentation = true
+        
+        tableView.tableHeaderView = searchController.searchBar
+        
+        definesPresentationContext = true
+    }
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        let searchTerm = searchController.searchBar.text ?? ""
+        let lowercaseSearchTerm = searchTerm.lowercaseString
+        
+        if let resultsController = searchController.searchResultsController as? EntryResultsTableViewController {
+            resultsController.filteredEntries =
+                EntryController.sharedInstance.entriesArray.filter({ $0.title.lowercaseString.containsString(lowercaseSearchTerm) })
+            resultsController.tableView.reloadData()
+        }
+        
+    }
+    
     // MARK: - Table view data source
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return EntryController.sharedInstance.entriesArray.count
     }
-
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("entryCell", forIndexPath: indexPath)
@@ -34,7 +64,7 @@ class EntryListTableViewController: UITableViewController {
         
         cell.textLabel?.text = entry.title
         cell.detailTextLabel?.text = "\(NSDate())"
-
+        
         return cell
     }
     
@@ -53,11 +83,25 @@ class EntryListTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toDetailView" {
+            
+            var selectedEntry: Entry
+            
+            let cell = sender as! UITableViewCell
+            if let indexPath = (searchController.searchResultsController as! EntryResultsTableViewController).tableView.indexPathForCell(cell) {
+                let filteredEntries = (searchController.searchResultsController as! EntryResultsTableViewController).filteredEntries
+                selectedEntry = filteredEntries[indexPath.row]
+                
+            } else {
+                let allEntries = EntryController.sharedInstance.entriesArray
+                let allEntriesIndexPath = tableView.indexPathForCell(cell)
+                selectedEntry = allEntries[allEntriesIndexPath!.row]
+            }
+            
+            
+            
             if let entryDetailViewController = segue.destinationViewController as? EntryDetailViewController {
-                if let cell = sender as? UITableViewCell, indexPath = tableView.indexPathForCell(cell) {
-                    let entry = EntryController.sharedInstance.entriesArray[indexPath.row]
-                    entryDetailViewController.entry = entry
-                }
+                _ = entryDetailViewController.view
+                entryDetailViewController.updateWithEntry(selectedEntry)
             }
         }
     }

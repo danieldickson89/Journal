@@ -16,6 +16,7 @@
 		3977DE1E1C72495500497C8D /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3977DE1B1C72487700497C8D /* Entry.swift */; };
 		3977DE1F1C72495A00497C8D /* Entry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3977DE1A1C72487700497C8D /* Entry+CoreDataProperties.swift */; };
 		3977DE8F1C72B02D00497C8D /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3977DE8E1C72B02D00497C8D /* Stack.swift */; };
+		3978291B1C7E3048002A542C /* EntryResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3978291A1C7E3048002A542C /* EntryResultsTableViewController.swift */; };
 		68816AC81BBB5405000569CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68816AC71BBB5405000569CE /* AppDelegate.swift */; };
 		68816ACD1BBB5405000569CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68816ACB1BBB5405000569CE /* Main.storyboard */; };
 		68816ACF1BBB5405000569CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68816ACE1BBB5405000569CE /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 		3977DE1A1C72487700497C8D /* Entry+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Entry+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3977DE1B1C72487700497C8D /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		3977DE8E1C72B02D00497C8D /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stack.swift; path = ../../Stack.swift; sourceTree = "<group>"; };
+		3978291A1C7E3048002A542C /* EntryResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryResultsTableViewController.swift; sourceTree = "<group>"; };
 		68816AC41BBB5405000569CE /* Journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Journal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68816AC71BBB5405000569CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68816ACC1BBB5405000569CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				68816ACB1BBB5405000569CE /* Main.storyboard */,
 				390C766D1C6403860023C154 /* EntryController.swift */,
 				AB180F6D1C64080000EE5EA6 /* EntryListTableViewController.swift */,
+				3978291A1C7E3048002A542C /* EntryResultsTableViewController.swift */,
 				AB180F6F1C640C8B00EE5EA6 /* EntryDetailViewController.swift */,
 				68816ACE1BBB5405000569CE /* Assets.xcassets */,
 				3952EBFC1C6A60CC00D21773 /* AppearanceController.swift */,
@@ -287,6 +290,7 @@
 				390C766E1C6403860023C154 /* EntryController.swift in Sources */,
 				AB180F6E1C64080000EE5EA6 /* EntryListTableViewController.swift in Sources */,
 				AB180F701C640C8B00EE5EA6 /* EntryDetailViewController.swift in Sources */,
+				3978291B1C7E3048002A542C /* EntryResultsTableViewController.swift in Sources */,
 				3977DE8F1C72B02D00497C8D /* Stack.swift in Sources */,
 				3977DE1D1C72487700497C8D /* Entry.swift in Sources */,
 				3977DE1C1C72487700497C8D /* Entry+CoreDataProperties.swift in Sources */,
